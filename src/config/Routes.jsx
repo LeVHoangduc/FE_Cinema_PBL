@@ -1,15 +1,15 @@
 import React from 'react'
 
-import { Route, Routes } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import Catalog from '../pages/Catalog'
 import Detail from '../pages/Detail'
 import Home from '../pages/Home'
 
 
-const Switch = () => {
+const Routes = () => {
     return (
         //Switch
-        <Routes>
+        <Switch>
             <Route
                 path='/:category/search/:keyword'
                 component={Catalog}
@@ -27,8 +27,8 @@ const Switch = () => {
                 exact
                 component={Home}
             />
-        </Routes>
+        </Switch>
     )
 }
 
-export default Switch // Routes
+export default Routes // Routes
