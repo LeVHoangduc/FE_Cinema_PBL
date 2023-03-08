@@ -1,9 +1,15 @@
-import React from 'react'
-
+import React from "react";
+import HeroSlide from "../components/hero-slide/HeroSlide";
+// import Slide from "../components/Testcode/slide.jsx";
+// import SlideNextButton from "../components/Testcode/swiper";
 const Home = () => {
-    return (
-        <div>Home</div>
-    )
-}
+  return (
+    <>
+      <HeroSlide />
+      {/* <Slide /> */}
+      {/* <SlideNextButton /> */}
+    </>
+  );
+};
 
-export default Home
+export default Home;
