@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import SwiperCore, { Autoplay } from "swiper";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 
-// import Button, { OutlineButton } from "../button/Button";
+import Button, { OutlineButton } from "../button/button";
 // import Modal, { ModalContent } from "../modal/Modal";
 import apiConfig from "../../api/apiConfig";
 import tmdbApi, { category, movieType } from "../../api/tmdbApi";
@@ -86,9 +86,18 @@ const HeroSlideItem = (props) => {
         <div className="hero-slide__item__content__info">
           <h2 className="title">{item.title}</h2>
           <div className="overview">{item.overview}</div>
-          <div className="btns"></div>
+          <div className="btns">
+            <Button onClick={() => history.push("/movie/" + item.id)}>
+              Watch now
+            </Button>
+            <OutlineButton onClick={() => console.log("TRAILER")}>
+              Watch trailer
+            </OutlineButton>
+          </div>
         </div>
-        <div className="hero-slide__item__content__poster"></div>
+        <div className="hero-slide__item__content__poster">
+          <img src={apiConfig.w500Image(item.poster_path)} />
+        </div>
       </div>
     </div>
   );

@@ -21,5 +21,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-src\components\Testcode
-src\SwiperConfig
+src/components/Testcode
+/src/SwiperConfig
+/Untitled-1.json
