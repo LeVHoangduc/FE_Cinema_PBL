@@ -17,14 +17,14 @@ export const OutlineButton = (props) => {
   return (
     <button
       className={`btn-outline ${props.className}`}
-      onClick={props.onclick ? () => props.onClick() : null}
+      onClick={props.onClick ? () => props.onClick() : null}
     >
       {props.children}
     </button>
   );
 };
 
-// button.PropTypes = {
-//   onclick: PropTypes.func,
-// };
+Button.PropTypes = {
+  onclick: PropTypes.func,
+};
 export default Button;
