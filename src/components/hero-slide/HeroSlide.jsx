@@ -1,22 +1,29 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
-import SwiperCore, { Autoplay } from "swiper";
+import SwiperCore, { Autoplay, FreeMode, Thumbs, Navigation } from "swiper";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 
 import Button, { OutlineButton } from "../button/button";
-// import Modal, { ModalContent } from "../modal/Modal";
+import Modal, { ModalContent } from "../modal/modal";
 import apiConfig from "../../api/apiConfig";
 import tmdbApi, { category, movieType } from "../../api/tmdbApi";
 
 import "./hero-slide.scss";
 
-import bg from "../../assets/images/zyro-image.png";
 import { useHistory } from "react-router-dom";
+
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
+
 const HeroSlide = () => {
-  SwiperCore.use([Autoplay]);
+  SwiperCore.use([Autoplay, Navigation, FreeMode, Thumbs]);
 
   const [movieItems, setMovieItems] = useState([]);
+  const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const [activeModal, setActiveModal] = useState(false);
 
   useEffect(() => {
     const getMovies = async () => {
@@ -36,29 +43,55 @@ const HeroSlide = () => {
     getMovies();
   }, []);
 
-  const SwiperButtonNext = ({ children }) => {
-    const swiper = useSwiper();
-    return <button onClick={() => swiper.slideNext()}>{children}</button>;
+  // const SwiperButtonNext = ({ children }) => {
+  //   const swiper = useSwiper();
+  //   return (
+  //     <button className="btn-next" onClick={() => swiper.slideNext()}>
+  //       {children}
+  //     </button>
+  //   );
+  // };
+  const handleOutlineButton = (string) => {
+    if (string === "true") setActiveModal(true);
   };
 
   return (
     <div className="hero-slide">
       <Swiper
-        modules={[Autoplay]}
         grabCursor={true}
         spaceBetween={0}
         slidesPerView={1}
-        autoplay={{ delay: 3000 }}
+        autoplay={{ delay: 2000 }}
+        // loop={true}
+        // navigation={true}
+        thumbs={{ swiper: thumbsSwiper }}
+        className="hero-slide2"
       >
-        <SwiperButtonNext>
-          <box-icon name="right-arrow-alt"></box-icon>
-          <img src={bg} />
-        </SwiperButtonNext>
         {movieItems.map((movie, index) => (
           <SwiperSlide key={index}>
             {(isActive) => (
-              // <img src={apiConfig.originalImage(movie.backdrop_path)} />
               <HeroSlideItem
+                item={movie}
+                className={`${isActive ? "active" : ""}`}
+                handleOutlineButton={handleOutlineButton}
+              />
+            )}
+          </SwiperSlide>
+        ))}
+      </Swiper>
+      <Swiper
+        onSwiper={setThumbsSwiper}
+        loop={true}
+        spaceBetween={10}
+        slidesPerView={4}
+        freeMode={true}
+        watchSlidesProgress={true}
+        className="hero-slide__thumb"
+      >
+        {movieItems.map((movie, index) => (
+          <SwiperSlide key={index}>
+            {(isActive) => (
+              <HeroSlideThumbs
                 item={movie}
                 className={`${isActive ? "active" : ""}`}
               />
@@ -66,16 +99,39 @@ const HeroSlide = () => {
           </SwiperSlide>
         ))}
       </Swiper>
+      {movieItems.map((item, i) => (
+        <TrailerModal key={i} item={item} />
+      ))}
     </div>
   );
 };
 
+console.log("re render");
 const HeroSlideItem = (props) => {
   let history = useHistory();
   const item = props.item;
   const background = apiConfig.originalImage(
     item.backdrop_path ? item.backdrop_path : item.poster_path
   );
+
+  const setModalActive = async () => {
+    const modal = document.querySelector(`#modal_${item.id}`);
+    // console.log("modal", modal);
+
+    const videos = await tmdbApi.getVideos(category.movie, item.id);
+    // console.log(videos);
+
+    if (videos.results.length > 0) {
+      const videSrc = "https://www.youtube.com/embed/" + videos.results[0].key; //can
+
+      modal
+        .querySelector(".modal__content > iframe")
+        .setAttribute("src", videSrc);
+    } else {
+      modal.querySelector(".modal__content").innerHTML = "No trailer";
+    }
+    modal.classList.toggle("active");
+  };
 
   return (
     <div
@@ -90,16 +146,51 @@ const HeroSlideItem = (props) => {
             <Button onClick={() => history.push("/movie/" + item.id)}>
               Watch now
             </Button>
-            <OutlineButton onClick={() => console.log("TRAILER")}>
+            <OutlineButton onClick={setModalActive}>
               Watch trailer
             </OutlineButton>
           </div>
         </div>
         <div className="hero-slide__item__content__poster">
-          <img src={apiConfig.w500Image(item.poster_path)} />
+          <img src={apiConfig.w500Image(item.poster_path)} alt="" />
         </div>
       </div>
     </div>
+  );
+};
+
+const HeroSlideThumbs = (props) => {
+  const item = props.item;
+  const background = apiConfig.originalImage(
+    item.backdrop_path ? item.backdrop_path : item.poster_path
+  );
+  return (
+    <div className={`hero-slide__thumbs `}>
+      <img src={background} />
+      <div className={`thumb_hover`}>
+        <span className="a">⊕</span>
+      </div>
+    </div>
+  );
+};
+
+// render modal , invisible
+const TrailerModal = (props) => {
+  const item = props.item;
+  const iframeRef = useRef(null);
+
+  const onClose = () => iframeRef.current.setAttribute("src", "");
+  return (
+    <Modal active={props.active} id={`modal_${item.id}`}>
+      <ModalContent onClose={onClose} class="modal__content">
+        <iframe
+          ref={iframeRef}
+          width="100%"
+          height="500px"
+          title="trailer"
+        ></iframe>
+      </ModalContent>
+    </Modal>
   );
 };
 
