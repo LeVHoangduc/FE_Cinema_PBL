@@ -1,6 +1,8 @@
-import React from 'react'
+import React from "react";
+import HeroSlide from "../components/hero-slide/HeroSlide";
+import Slide from "../components/Testcode/slide.jsx";
 import { Link } from 'react-router-dom'
-import { OutlineButton} from '../components/button/button'
+import { OutlineButton} from '../components/button/button'// import SlideNextButton from "../components/Testcode/swiper";
 const Home = () => {
     return (
         <>
@@ -18,5 +20,3 @@ const Home = () => {
         </>
     )
 }
-
-export default Home
