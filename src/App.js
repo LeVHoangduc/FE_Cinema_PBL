@@ -11,17 +11,17 @@ import Routes from "./config/Routes";
 
 function App() {
   return (
-    <BrowserRouter>
+     <BrowserRouter>
       <Route
         render={(props) => (
-          <>
-            <Header {...props} />
+           <>
+             <Header {...props} />
             <Routes />
-            <Footer />
-          </>
+             <Footer />
+           </>
         )}
       />
-    </BrowserRouter>
+     </BrowserRouter>
   );
 }
 
