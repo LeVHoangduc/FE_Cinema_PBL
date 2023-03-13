@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import "./button.scss";
-const Button = (props) => {
+const button = (props) => {
   return (
     <button
       className={`btn ${props.className}`}
@@ -24,7 +24,7 @@ export const OutlineButton = (props) => {
   );
 };
 
-Button.PropTypes = {
+button.PropTypes = {
   onclick: PropTypes.func,
 };
-export default Button;
+export default button;
