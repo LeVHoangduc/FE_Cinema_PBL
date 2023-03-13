@@ -1,19 +1,5 @@
 import React from "react";
 import HeroSlide from "../components/hero-slide/HeroSlide";
-<<<<<<< HEAD
-=======
-// import Slide from "../components/Testcode/slide.jsx";
-// import SlideNextButton from "../components/Testcode/swiper";
-const Home = () => {
-  return (
-    <>
-      <HeroSlide />
-      {/* <Slide /> */}
-      {/* <SlideNextButton /> */}
-    </>
-  );
-};
->>>>>>> 327cbb0e8f3f393af26c21ecf0f2cac0ee306e25
 
 import { Link } from 'react-router-dom'
 import { OutlineButton} from '../components/button/button'// import SlideNextButton from "../components/Testcode/swiper";
