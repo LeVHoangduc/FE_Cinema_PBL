@@ -24,7 +24,7 @@ export const OutlineButton = (props) => {
   );
 };
 
-button.PropTypes = {
+button.propTypes = {
   onclick: PropTypes.func,
 };
 export default button;
