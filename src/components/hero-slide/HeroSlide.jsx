@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef } from "react";
 
 import SwiperCore, { Autoplay, FreeMode, Thumbs, Navigation } from "swiper";
-import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 import Button, { OutlineButton } from "../button/button";
 import Modal, { ModalContent } from "../modal/modal";
@@ -23,7 +23,6 @@ const HeroSlide = () => {
 
   const [movieItems, setMovieItems] = useState([]);
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
-  const [activeModal, setActiveModal] = useState(false);
 
   useEffect(() => {
     const getMovies = async () => {
@@ -51,9 +50,6 @@ const HeroSlide = () => {
   //     </button>
   //   );
   // };
-  const handleOutlineButton = (string) => {
-    if (string === "true") setActiveModal(true);
-  };
 
   return (
     <div className="hero-slide">
@@ -73,7 +69,6 @@ const HeroSlide = () => {
               <HeroSlideItem
                 item={movie}
                 className={`${isActive ? "active" : ""}`}
-                handleOutlineButton={handleOutlineButton}
               />
             )}
           </SwiperSlide>
