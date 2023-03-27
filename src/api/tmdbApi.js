@@ -24,7 +24,8 @@ const tmdbApi = {
     return axiosClient.get(url, params);
   },
   getTvList: (type, params) => {
-    const url = "tv/" + tvType[type];
+    // const url = "tv/" + tvType[type];
+    const url = `tv/${tvType[type]}?api_key=${apiConfig.apiKey}`;
     return axiosClient.get(url, params);
   },
   getVideos: (cate, id) => {
@@ -44,7 +45,8 @@ const tmdbApi = {
     return axiosClient.get(url, { params: {} });
   },
   similar: (cate, id) => {
-    const url = category[cate] + "/" + id + "/similar";
+    // const url = category[cate] + "/" + id + "/similar";
+    const url = `${category[cate]}/${id}/similar?api_key=${apiConfig.apiKey}`;
     return axiosClient.get(url, { params: {} });
   },
 };
