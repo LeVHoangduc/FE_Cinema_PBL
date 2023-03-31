@@ -9,6 +9,7 @@ import Footer from "./components/footer/Footer.jsx";
 
 import Routes from "./config/Routes";
 
+
 function App() {
   return (
      <BrowserRouter>
@@ -17,6 +18,7 @@ function App() {
            <>
              <Header {...props} />
             <Routes />
+            
              <Footer />
            </>
         )}

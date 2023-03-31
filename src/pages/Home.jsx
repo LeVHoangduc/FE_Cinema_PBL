@@ -3,9 +3,11 @@ import HeroSlide from "../components/hero-slide/HeroSlide";
 
 import { Link } from "react-router-dom";
 import { OutlineButton } from "../components/button/button"; // import SlideNextButton from "../components/Testcode/swiper";
+
 const Home = () => {
   return (
     <>
+      
       <HeroSlide />
       <div className="container">
         <div className="section mb-3">
