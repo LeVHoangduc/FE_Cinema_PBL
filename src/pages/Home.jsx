@@ -8,6 +8,7 @@ import MovieList from "../components/movie-list/MovieList";
 const Home = () => {
   return (
     <>
+      
       <HeroSlide />
       <div className="container">
         <div className="section mb-3">
