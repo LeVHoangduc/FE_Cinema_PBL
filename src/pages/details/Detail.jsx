@@ -5,6 +5,7 @@ import tmdbApi from '../../api/tmdbApi';
 import apiConfig from '../../api/apiConfig';
 import CastList from './CastList';
 import VideoList from './VideoList';
+import MovieList from '../../components/movie-list/MovieList';
 
 
 
@@ -64,6 +65,7 @@ const Detail = () => {
                             <h2>Similar</h2>
 
                         </div>
+                        <MovieList category={category} type="similar"  id={item.id}/>
 
                     </div>
                 </>
