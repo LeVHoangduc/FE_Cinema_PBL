@@ -84,12 +84,31 @@
           padding: .5rem 1.5rem;
           border: 2px solid $white;
           border-radius: $border-radius;
-          font-size: 8rem;
+          font-size: .8rem;
           font-weight: 600;
           background-color: $body-bg;
 
         }
       }
+      .moreinfo{
+
+        display: flex;
+        justify-content: flex-start;
+      
+      & > div ~ div{
+        margin-left: 8rem;
+      }
+     
+
+
+
+     
+
+
+
+      }
+
+
 
     }
 

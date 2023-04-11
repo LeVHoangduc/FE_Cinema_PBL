@@ -55,7 +55,7 @@ const Header = () => {
          <div ref={headerRef} className="header">
              <div className="header_wrap container">
                  <div className="logo">
-                    <Link to="">
+                    <Link to="/">
                         <img src="https://metiz.vn/static/assets/websites/images/Metiz_logo/METIZ_LOGO_WEB.png" alt="" />
                     </Link>
                      
@@ -72,40 +72,42 @@ const Header = () => {
                     // )) */}
                 
                     <li className='dropdown'>
-                       <a href='#' className='dropdown-toggle'data-toggle="dropdown" role="button" aria-aria-haspopup="true" aria-expanded="false">Phim</a>
+                       <Link className='dropdown-toggle'data-toggle="dropdown" role="button" aria-aria-haspopup="true" aria-expanded="false">Phim</Link>
                        <ul className='dropdown-menu' >
                             <li >
-                                <a>Phim đang chiếu</a>
+                                <Link>Phim đang chiếu</Link>
                             </li>
                             <li >
-                                <a>Phim sắp chiếu</a>
+                                <Link>Phim sắp chiếu</Link>
                             </li>
                         </ul> 
                     </li>
 
                     <li>
-                        <a>Lịch Chiếu</a>
+                        <Link>Lịch Chiếu</Link>
                     </li>
 
                     <li>
-                        <a>Blog Phim</a>
+                        
+                            <Link to="/blog ">Blog Phim</Link>
+                        
                     </li>
                     <li>
-                        <a href='#'>
+                        <Link to="/blog">
                             Khuyến mãi
-                        </a>
+                        </Link>
                     </li>
 
                     <li className='dropdown'>
-                        <a href='#' className='dropdown-toggle'data-toggle="dropdown" role="button" aria-aria-haspopup="true" aria-expanded="false">
+                        <Link to="/blog" className='dropdown-toggle'data-toggle="dropdown" role="button" aria-aria-haspopup="true" aria-expanded="false">
                             Thành viên
-                        </a>
+                        </Link>
                         <ul className='dropdown-menu'>
                             <li>
-                                <a>Tài khoản</a>
+                                <Link to="/blog">Tài khoản</Link>
                             </li>
                             <li>
-                                <a>Quyền lợi</a>
+                                <Link to="/blog">Quyền lợi</Link>
                             </li>
                         </ul>
                     </li>
@@ -113,11 +115,11 @@ const Header = () => {
 
                 <ul className='header__user'>
                     <li className='dropdown__user' >
-                        <a>Đăng nhập</a>
+                        <Link>Đăng nhập</Link>
                     </li>
                     <span>/</span>
                     <li>
-                        <a>Đăng ký</a>
+                        <Link>Đăng ký</Link>
                     </li>
                 </ul>
                 
