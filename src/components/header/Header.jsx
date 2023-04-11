@@ -6,26 +6,6 @@ import React, { useRef,useEffect, useState } from 'react'
  
 
  import logo from '../../assets/tmovie.png';
-  //
-//         display: 'Lịch Chiếu',
-//         path: '/schedule'
-//      },
-//      {
-//         display: 'Blog Phim',
-//         path: '/blog'
-//      },
-//      {
-//         display:' Khuyến Mãi',
-//         path: '/sale'
-//      },
-
-//      {
-//         display:'Thành Viên',
-//         path:'/member'
-//      }
-     
-     
-// ];
 const Header = () => {
 
     const { pathname }= useLocation();
@@ -72,7 +52,7 @@ const Header = () => {
                     // )) */}
                 
                     <li className='dropdown'>
-                       <Link className='dropdown-toggle'data-toggle="dropdown" role="button" aria-aria-haspopup="true" aria-expanded="false">Phim</Link>
+                       <Link to="/" className='dropdown-toggle'data-toggle="dropdown" role="button" aria-aria-haspopup="true" aria-expanded="false">Phim</Link>
                        <ul className='dropdown-menu' >
                             <li >
                                 <Link>Phim đang chiếu</Link>
@@ -88,8 +68,7 @@ const Header = () => {
                     </li>
 
                     <li>
-                        
-                            <Link to="/blog ">Blog Phim</Link>
+                        <Link to="/blog">Blog Phim</Link>
                         
                     </li>
                     <li>

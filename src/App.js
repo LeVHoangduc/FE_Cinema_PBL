@@ -8,7 +8,6 @@ import Header from "./components/header/Header.jsx";
 import Footer from "./components/footer/Footer.jsx";
 
 import Routes from "./config/Routes";
-import Blog from "./pages/blog/Blog";
 
 
 function App() {
