@@ -8,7 +8,7 @@ const Blog=()=>{
     return(
        
         <>
-            {/* <div className="background" style={{backgroundImage: "url('https://moveek.com/build/images/tix-banner.36bfeb64.png')" }}>
+            <div className="background" style={{backgroundImage: "url('https://moveek.com/build/images/tix-banner.36bfeb64.png')" }}>
                 <div className="content">
                     <h1 className="text-content">Đánh giá Phim</h1>
                     <div className="text-content">
@@ -150,8 +150,7 @@ const Blog=()=>{
                 
                         
 
-            </div> */}
-            <div>Con cac</div>
+            </div>
         </>
         
     );
