@@ -9,12 +9,12 @@ import Footer from "./components/footer/Footer.jsx";
 
 import Routes from "./config/Routes";
 
-
 function App() {
   return (
-     <BrowserRouter>
+    <BrowserRouter>
       <Route
         render={(props) => (
+<<<<<<< Updated upstream
            <>
             <Header {...props} />
             <Routes />
@@ -24,9 +24,16 @@ function App() {
 
              
            </>
+=======
+          <>
+            <Header {...props} />
+            <Routes />
+            <Footer />
+          </>
+>>>>>>> Stashed changes
         )}
       />
-     </BrowserRouter>
+    </BrowserRouter>
   );
 }
 

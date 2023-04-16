@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 import { OutlineButton } from "../components/button/button";
 import { category, movieType, tvType } from "../api/tmdbApi";
 import MovieList from "../components/movie-list/MovieList";
+
 const Home = () => {
   return (
     <>
-      
       <HeroSlide />
       <div className="container">
         <div className="section mb-3">
