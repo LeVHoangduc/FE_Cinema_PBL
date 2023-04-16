@@ -14,23 +14,11 @@ function App() {
     <BrowserRouter>
       <Route
         render={(props) => (
-<<<<<<< Updated upstream
-           <>
-            <Header {...props} />
-            <Routes />
-            
-            <Footer />
-             
-
-             
-           </>
-=======
           <>
             <Header {...props} />
             <Routes />
             <Footer />
           </>
->>>>>>> Stashed changes
         )}
       />
     </BrowserRouter>
