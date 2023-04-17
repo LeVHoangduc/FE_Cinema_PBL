@@ -56,7 +56,7 @@
       }
 
       .title {
-        font-size: 5rem;
+        font-size: 4.5rem;
         font-weight: 700;
         line-height: 1;
 
@@ -103,6 +103,7 @@
   }
 
   &.active > &__content > &__content__poster {
+    margin-left: 15px;
     img {
       transform: scale(1);
     }
@@ -121,6 +122,11 @@
     }
 
     .overview {
+      // height: 200px;
+      // width: 380px;
+      // text-overflow: ellipsis;
+      // white-space: nowrap;
+      // overflow: hidden;
       transition-delay: 0.6s, 0.6s;
     }
 

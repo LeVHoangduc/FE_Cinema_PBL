@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 import { OutlineButton } from "../components/button/button";
 import { category, movieType, tvType } from "../api/tmdbApi";
 import MovieList from "../components/movie-list/MovieList";
+
 const Home = () => {
   return (
     <>
-      
       <HeroSlide />
       <div className="container">
         <div className="section mb-3">
@@ -18,7 +18,8 @@ const Home = () => {
               <OutlineButton className="small">View More</OutlineButton>
             </Link>
           </div>
-          <MovieList category={category.movie} type={movieType.popular} />
+          {/* <MovieList category={category.movie} type={movieType.popular} /> */}
+          <MovieList />
         </div>
 
         <div className="section mb-3">
@@ -31,7 +32,7 @@ const Home = () => {
           <MovieList category={category.movie} type={movieType.top_rated} />
         </div>
 
-        <div className="section mb-3">
+        {/* <div className="section mb-3">
           <div className="section__header mb-2">
             <h2>Trending TV</h2>
             <Link to="/tv">
@@ -39,9 +40,9 @@ const Home = () => {
             </Link>
           </div>
           <MovieList category={category.tv} type={tvType.popular} />
-        </div>
+        </div> */}
 
-        <div className="section mb-3">
+        {/* <div className="section mb-3">
           <div className="section__header mb-2">
             <h2>Top Rated TV</h2>
             <Link to="/tv">
@@ -49,7 +50,7 @@ const Home = () => {
             </Link>
           </div>
           <MovieList category={category.tv} type={tvType.top_rated} />
-        </div>
+        </div> */}
       </div>
     </>
   );

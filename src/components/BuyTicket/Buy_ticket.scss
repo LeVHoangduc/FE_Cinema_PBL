@@ -1,0 +1,128 @@
+.row {
+  display: grid;
+  // margin-top: 100px;
+  margin: 100px 2rem;
+  max-width: 700px;
+  // max-height: 600px;
+  grid-template-columns: 1fr 1fr 2fr;
+  gap: 1.4rem;
+  .col-1 {
+    // grid-column-start: 1;
+    // grid-column-end: 3;
+    border-radius: 0.2rem;
+    overflow: hidden;
+    .list-group {
+      display: flex;
+      flex-direction: column;
+      padding-left: 0;
+      padding-bottom: 0;
+      background-color: white;
+      color: #0e1d2f;
+      background-clip: border-box; // khu vực sơn nền
+
+      .list-group-item {
+        border: 0.5px solid #edf2f9;
+        &.list-group-region {
+          background-color: #f9f6ec;
+          opacity: 0.8;
+          padding: 0.8rem;
+        }
+        &.list-cinema-item {
+          display: flex;
+          // justify-content: space-around;
+          align-items: center;
+        }
+        .item {
+          width: 100%;
+          height: 100%;
+          display: block;
+          padding: 0.8rem;
+          &:focus {
+            background-color: #ff5400;
+            color: #0e1d2f;
+          }
+        }
+      }
+    }
+  }
+  .col-2 {
+    .showtimes {
+      display: inline-flex;
+      vertical-align: middle;
+      background-color: #f9f6ec;
+      border-radius: 0.2rem;
+      margin-bottom: 1rem;
+      color: #283e59;
+
+      .showtimes_date {
+        padding: 1.12rem;
+
+        &:hover,
+        &:focus {
+          background-color: #f3dd96;
+          color: #0e1d2f;
+        }
+      }
+    }
+    .alert-warning {
+      color: #283e59;
+      background-color: #f6c343;
+      border-color: #f6c343;
+      padding: 0.6rem;
+      border-radius: 0.2rem;
+      margin-bottom: 1rem;
+      .alert_icon {
+        font-size: 1rem;
+        padding: 0.8rem;
+      }
+    }
+    .cinema_inf {
+      background-color: #f9f6ec;
+      border-color: #f6c343;
+      color: #0e1d2f;
+      border-radius: 0.2rem;
+      padding: 0.6rem;
+      .cinema_content {
+        opacity: 0.8;
+        .cinema_content_direction {
+          color: #2c7be5;
+        }
+      }
+    }
+
+    .card-body {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      background-color: white;
+      color: #0e1d2f;
+      margin-top: 1rem;
+      .card_image {
+        font-size: 30px;
+      }
+      .card_buyTicket,
+      .card_image {
+        padding: 1.25rem;
+      }
+      .card_buyTicket {
+        .card_price {
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+        }
+      }
+    }
+  }
+}
+
+//  #ff5400;
+
+.text-dark {
+  font-weight: 600;
+}
+
+.card_content {
+  opacity: 0.8;
+  .trailer {
+    color: #2c7be5;
+  }
+}

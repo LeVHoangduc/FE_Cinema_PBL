@@ -13,28 +13,37 @@ import apiConfig from "../../api/apiConfig";
 
 import MovieCard from "../movie-card/MovieCard";
 
-const MovieList = (props) => {
+// const MovieList = (props) =>
+const MovieList = () => {
   const [items, setItems] = useState([]);
 
+  // useEffect(() => {
+  //   const getList = async () => {
+  //     let response = null;
+  //     const params = {};
+
+  //     if (props.type !== "similar") {
+  //       switch (props.category) {
+  //         case category.movie:
+  //           response = await tmdbApi.getMoviesList(props.type, { params });
+  //           break;
+  //         default:
+  //           response = await tmdbApi.getTvList(props.type, { params });
+  //       }
+  //     } else {
+  //       response = await tmdbApi.similar(props.category, props.id);
+  //     }
+  //     setItems(response.results);
+  //   };
+  //   getList();
+  // }, []);
   useEffect(() => {
     const getList = async () => {
       let response = null;
-      const params = {};
-
-      if (props.type !== "similar") {
-        switch (props.category) {
-          case category.movie:
-            response = await tmdbApi.getMoviesList(props.type, { params });
-            break;
-          default:
-            response = await tmdbApi.getTvList(props.type, { params });
-        }
-      } else {
-        response = await tmdbApi.similar(props.category, props.id);
-      }
-      setItems(response.results);
+      response = await tmdbApi.getMoviesList();
+      setItems(response);
+      getList();
     };
-    getList();
   }, []);
 
   return (
@@ -42,7 +51,8 @@ const MovieList = (props) => {
       <Swiper grabCursor={true} spaceBetween={10} slidesPerView={"auto"}>
         {items.map((item, i) => (
           <SwiperSlide key={i}>
-            <MovieCard item={item} category={props.category} />
+            {/* <MovieCard item={item} category={props.category} /> */}
+            <MovieCard item={item} />
           </SwiperSlide>
         ))}
       </Swiper>
