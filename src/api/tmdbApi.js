@@ -55,7 +55,7 @@ const tmdbApi = {
 const tmdbApi_1 = {
   getMoviesList: () => {
     const url = "movies/";
-    console.log(url);
+    // console.log(url);
     return axiosClient.get(url);
   },
   getVideos: (cate, id) => {
