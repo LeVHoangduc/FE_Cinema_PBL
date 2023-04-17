@@ -7,7 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import Button, { OutlineButton } from "../button/button";
 import Modal, { ModalContent } from "../modal/modal";
 import apiConfig from "../../api/apiConfig";
-import tmdbApi, { category, movieType } from "../../api/tmdbApi";
+import tmdbApi from "../../api/tmdbApi";
 
 import "./hero-slide.scss";
 
@@ -30,26 +30,15 @@ const HeroSlide = () => {
         page: 1,
       };
       try {
-        const response = await tmdbApi.getMoviesList(movieType.popular, {
-          params,
-        });
-        setMovieItems(response.results.slice(0, 4));
-        // console.log(response);
+        const response = await tmdbApi.getMoviesList();
+        setMovieItems(response.slice(0, 4));
+        console.log(response);
       } catch {
         console.log("error useEffect");
       }
     };
     getMovies();
   }, []);
-
-  // const SwiperButtonNext = ({ children }) => {
-  //   const swiper = useSwiper();
-  //   return (
-  //     <button className="btn-next" onClick={() => swiper.slideNext()}>
-  //       {children}
-  //     </button>
-  //   );
-  // };
 
   return (
     <div className="hero-slide">
@@ -58,8 +47,6 @@ const HeroSlide = () => {
         spaceBetween={0}
         slidesPerView={1}
         autoplay={{ delay: 2000 }}
-        // loop={true}
-        // navigation={true}
         thumbs={{ swiper: thumbsSwiper }}
         className="hero-slide2"
       >
@@ -105,49 +92,82 @@ console.log("re render");
 const HeroSlideItem = (props) => {
   let history = useHistory();
   const item = props.item;
-  const background = apiConfig.originalImage(
-    item.backdrop_path ? item.backdrop_path : item.poster_path
-  );
+  // console.log(item);
+  // const background = apiConfig.originalImage(
+  //   item.backdrop_path ? item.backdrop_path : item.poster_path
+  // );
+  // console.log(item.id);
+  const background = item.banner_image;
+  // console.log(background.cover_image);
 
-  const setModalActive = async () => {
+  // const setModalActive = async () => {
+  //   const modal = document.querySelector(`#modal_${item.id}`);
+  //   // console.log("modal", modal);
+
+  //   // const videos = await tmdbApi.getVideos(category.movie, item.id);
+  //   const videos = item.trailer_link;
+  //   console.log(videos);
+
+  //   if (videos.length > 0) {
+  //     // const videSrc = "https://www.youtube.com/embed/" + videos.results[0].key; //can
+
+  //     modal
+  //       .querySelector(".modal__content > iframe")
+  //       // .setAttribute("src", videSrc);
+  //       .setAttribute("src", videos);
+  //   } else {
+  //     modal.querySelector(".modal__content").innerHTML = "No trailer";
+  //   }
+  //   modal.classList.toggle("active");
+  // };
+  const setModalActive = () => {
     const modal = document.querySelector(`#modal_${item.id}`);
     // console.log("modal", modal);
 
-    const videos = await tmdbApi.getVideos(category.movie, item.id);
+    // const videos = await tmdbApi.getVideos(category.movie, item.id);
+    const videos = item.trailer_id;
     // console.log(videos);
 
-    if (videos.results.length > 0) {
-      const videSrc = "https://www.youtube.com/embed/" + videos.results[0].key; //can
+    if (videos.length > 0) {
+      // const videSrc = "https://www.youtube.com/embed/" + videos.results[0].key; //can
 
       modal
         .querySelector(".modal__content > iframe")
-        .setAttribute("src", videSrc);
+        // .setAttribute("src", videSrc);
+        .setAttribute("src", videos);
     } else {
       modal.querySelector(".modal__content").innerHTML = "No trailer";
     }
     modal.classList.toggle("active");
   };
 
+  const text = item.description;
+  const words = text.split(" ");
+  const first20Words = words.slice(0, 20);
+
   return (
     <div
       className={`hero-slide__item ${props.className}`}
-      style={{ backgroundImage: `url(${background})` }}
+      // style={{ backgroundImage: `url(${background})` }}
+      style={{
+        backgroundImage: `url(${background})`,
+      }}
     >
       <div className="hero-slide__item__content container">
         <div className="hero-slide__item__content__info">
-          <h2 className="title">{item.title}</h2>
-          <div className="overview">{item.overview}</div>
+          <h2 className="title">{item.name}</h2>
+          {/* <div className="overview">{item.overview}</div> */}
+          <div className="overview">{first20Words.join(" ")} ...</div>
           <div className="btns">
             <Button onClick={() => history.push("/movie/" + item.id)}>
               Đặt vé
             </Button>
-            <OutlineButton onClick={setModalActive}>
-              Chi tiết
-            </OutlineButton>
+            <OutlineButton onClick={setModalActive}>Chi tiết</OutlineButton>
           </div>
         </div>
         <div className="hero-slide__item__content__poster">
-          <img src={apiConfig.w500Image(item.poster_path)} alt="" />
+          {/* <img src={apiConfig.w500Image(item.poster_path)} alt="" /> */}
+          <img src={apiConfig.w500Image(item.cover_image)} alt="" />
         </div>
       </div>
     </div>
@@ -156,9 +176,10 @@ const HeroSlideItem = (props) => {
 
 const HeroSlideThumbs = (props) => {
   const item = props.item;
-  const background = apiConfig.originalImage(
-    item.backdrop_path ? item.backdrop_path : item.poster_path
-  );
+  // const background = apiConfig.originalImage(
+  //   item.backdrop_path ? item.backdrop_path : item.poster_path
+  // );
+  const background = item.banner_image;
   return (
     <div className={`hero-slide__thumbs `}>
       <img src={background} />

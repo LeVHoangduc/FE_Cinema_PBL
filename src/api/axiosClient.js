@@ -1,7 +1,7 @@
 import axios from "axios";
 
 import apiConfig from "./apiConfig";
-import queryString from "query-string";
+// import queryString from "query-string";
 
 const axiosClient = axios.create({
   baseURL: apiConfig.baseUrl,
@@ -14,6 +14,7 @@ axiosClient.interceptors.request.use(async (config) => config);
 axiosClient.interceptors.response.use(
   (response) => {
     if (response && response.data) {
+      console.log(response);
       return response.data;
     }
     return response;
