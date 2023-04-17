@@ -1,4 +1,4 @@
-const urlApi = "http://192.168.1.51:8000/";
+const urlApi = "https://cinema-00wj.onrender.com/";
 // const urlApi = "https://api.themoviedb.org/3/";
 
 export default urlApi;
