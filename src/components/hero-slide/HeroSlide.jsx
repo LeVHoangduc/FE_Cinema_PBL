@@ -32,7 +32,7 @@ const HeroSlide = () => {
       try {
         const response = await tmdbApi.getMoviesList();
         setMovieItems(response.slice(0, 4));
-        console.log(response);
+        // console.log(response);
       } catch {
         console.log("error useEffect");
       }
