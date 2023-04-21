@@ -1,16 +1,28 @@
-.row {
-  display: grid;
+.buyticket {
+  // grid-column: span 2 / span 2;
+  // grid-column-start: 1;
+  // grid-column-end: 3;
+  display: grid !important;
+  margin-top: 100px;
+  // margin: 100px auto;
   // margin-top: 100px;
-  margin: 100px 2rem;
-  max-width: 700px;
+  // max-width: 700px;
   // max-height: 600px;
-  grid-template-columns: 1fr 1fr 2fr;
-  gap: 1.4rem;
+  grid-template-columns: 2fr 2fr 4fr;
+  gap: 4rem;
+  //new
+  display: grid;
+  // grid-template-columns: repeat(12, minmax(0, 1fr));
+  justify-content: center;
+  // width: 66%;
+  padding: 6rem;
   .col-1 {
-    // grid-column-start: 1;
-    // grid-column-end: 3;
+    // grid-column: 2 / span 2;
     border-radius: 0.2rem;
     overflow: hidden;
+    box-shadow: 0 10px 10px 0 rgba(96, 92, 94, 0.48),
+      0 8px 30px 0 rgba(96, 92, 94, 0.48);
+    opacity: 0.9;
     .list-group {
       display: flex;
       flex-direction: column;
@@ -19,17 +31,16 @@
       background-color: white;
       color: #0e1d2f;
       background-clip: border-box; // khu vực sơn nền
-
+      width: 100%;
       .list-group-item {
         border: 0.5px solid #edf2f9;
         &.list-group-region {
           background-color: #f9f6ec;
-          opacity: 0.8;
+          // opacity: 0.8;
           padding: 0.8rem;
         }
         &.list-cinema-item {
           display: flex;
-          // justify-content: space-around;
           align-items: center;
         }
         .item {
@@ -46,6 +57,10 @@
     }
   }
   .col-2 {
+    // grid-column: 4 / span 4;
+    box-shadow: 0 10px 10px 0 rgba(96, 92, 94, 0.48),
+      0 8px 30px 0 rgba(96, 92, 94, 0.48);
+    opacity: 0.9;
     .showtimes {
       display: inline-flex;
       vertical-align: middle;
@@ -53,7 +68,8 @@
       border-radius: 0.2rem;
       margin-bottom: 1rem;
       color: #283e59;
-
+      width: 100%;
+      justify-content: space-between;
       .showtimes_date {
         padding: 1.12rem;
 
@@ -64,13 +80,17 @@
         }
       }
     }
-    .alert-warning {
+    .alert {
       color: #283e59;
       background-color: #f6c343;
       border-color: #f6c343;
       padding: 0.6rem;
       border-radius: 0.2rem;
       margin-bottom: 1rem;
+      display: flex;
+      // justify-content: space-evenly;
+      align-items: center;
+      padding-left: 1rem;
       .alert_icon {
         font-size: 1rem;
         padding: 0.8rem;
@@ -112,9 +132,17 @@
       }
     }
   }
+  .non-showtimes {
+    background-color: #f9f6ec;
+    color: #283e59;
+    height: 60px;
+    line-height: 60px;
+    padding-left: 2rem;
+    font-weight: 500;
+    box-shadow: unset;
+    border-radius: 0.2rem;
+  }
 }
-
-//  #ff5400;
 
 .text-dark {
   font-weight: 600;

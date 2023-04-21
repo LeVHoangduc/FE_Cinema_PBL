@@ -71,7 +71,7 @@ const Header = () => {
           </li>
 
           <li>
-            <Link to="/">Lịch Chiếu</Link>
+            <Link to="/buyticket">Lịch Chiếu</Link>
           </li>
 
           <li>
