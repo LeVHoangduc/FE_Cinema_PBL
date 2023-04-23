@@ -10,10 +10,13 @@ export const AppContext = createContext();
 export const AppProvider = ({ children }) => {
   // const [city, setCity] = useState(initialCity);
   const [isActive, setIsActive] = useState(true);
+  const [cityName, setCityName] = useState("");
   return (
     <AppContext.Provider
       value={{
         isActive,
+        cityName,
+        setCityName,
       }}
     >
       {children}
